@@ -1,0 +1,77 @@
+<!--Another iteration of home3.html-->
+<!--
+Reference video (about 7 min in so far): https://www.youtube.com/watch?v=8QKOaTYvYUA&t=133s
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel = "stylesheet" href = "/static/homePage.css"><!--Note: All CSS file links should be included in the head. However, since we are using Flask, best to link CSS file using Jinja2-->
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename ='static/homePage.css') }}">-->
+    <title>Iris Flower ML Classifer</title>
+</head>
+<body>
+    <header>
+        <img class = "webpageLogo" src = "/static/IrisLogo.png" width = 125px height = 125px alt = "Logo of website with Iris flower">
+        <input type = "checkbox" id = "navToggle" class = "navToggle"> <!--This will be the toggle button to enable mobile to see full nav bar. This is because we don't want to use any JS in making the toggle feature-->
+        <nav> <!--Putting the nav tag helps incidate a set of hyperlinks. Only intended for major blocks of such links-->
+            <ul> <!--Defining an unordered list-->
+                <li><a href = "{{url_for('home')}}">Home</a></li>
+                <li><a href = "{{ url_for('aboutIrisFlower')}}">About the Flower</a></li>
+                <li><a href = "{{ url_for('aboutApplication')}}">About the Application</a></li>
+                <li><a href = "{{ url_for('contactInfo')}}">Contact</a></li>
+            </ul>
+        </nav>
+        <label for = "navToggle" class = "navToggleSymbol"> <!--The label tag serves as a "label" for the checkbox.-->
+            <span>⌄</span> <!--In this case, because we are not actually designing a checklist item (we are designing a "button"), the value of this label is the symbol itself. Using span instead of div because this is an inline element-->
+        </label>
+    </header>
+    <div class = "pageTitle">
+        <h1 class = "display-6">Welcome to the Iris ML Flower Classifier!</h1>
+    </div>
+    <div class = "container">
+        <!--<div class = "instructionsAndInput">--> <!--The following sections are laid out using Flexbox, which enables sections to be displayed more neatly-->
+            <div class = "row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class = "userInstructions">
+                        <p>Please enter the length and width of the sepal and petal of your Iris Flower <b>in cm!</b></p>
+                        <p>Afterwards, press the button <b>"Submit Iris Measurements"</b>, to find out whether your Iris flower is of one of the following species...</p>
+                            <ul>
+                                <li>Setosa</li>
+                                <li>Versicolor</li>
+                                <li>Virginica</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class = "userInputSections">
+                        <form name = "IrisInputForm" action = "" method ="post"> 
+                            <!--name = "IrisInputForm" identifies the form block for styling purposes in CSS-->
+                            <!-- action = "#" means that the same webpage (and address) is used for input and output of form data-->
+                            <!--method = "post" means that the submitted form data is sent to be processed via the web server controlled by Flask-->
+                            <div class = "formContent">
+                                <p>Sepal Length: <input type = "number" name = sepalLength id = sepalLength step = "0.01" placeholder = "Enter value in cm" required></p>
+                                <p>Sepal Width: <input type = "number" name = sepalWidth id = sepalWidth step = "0.01" placeholder = "Enter value in cm " required></p>
+                                <p>Petal Length: <input type = "number" name = petalLength id = petalLength step = "0.01" placeholder = "Enter value in cm" required></p>
+                                <p>Petal Width: <input type = "number" name = petalWidth id = petalWidth step = "0.01" placeholder = "Enter value in cm " required></p>
+                                <div id = "submitButton"> <input type="submit" value="Submit Iris Measurements"> </div><!--Displays a submit button -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <!--</div>-->
+    </div>
+    <footer class = "mt-auto">
+        <pre>Created with ❤️ by Carmen Chau.           <a href="{{ url_for('contactInfo') }}">Contact Information</a></pre>
+    </footer> 
+</body>
+</html>

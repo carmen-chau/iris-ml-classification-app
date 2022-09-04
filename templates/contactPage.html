@@ -1,0 +1,77 @@
+<!--This is the emailing version of contactPage.html. Instead of storing user input via local storage, instead trying to send off data through email-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Page</title>
+</head>
+<body>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--CSS Link-->
+    <link rel = "stylesheet" href = "/static/contactPage.css">
+    <header>
+        <img class = "webpageLogo" src = "/static/IrisLogo.png" width = 125px height = 125px alt = "Logo of website with Iris flower">
+        <input type = "checkbox" id = "navToggle" class = "navToggle"> <!--This will be the toggle button to enable mobile to see full nav bar. This is because we don't want to use any JS in making the toggle feature-->
+        <nav> <!--Putting the nav tag helps incidate a set of hyperlinks. Only intended for major blocks of such links-->
+            <ul> <!--Defining an unordered list-->
+                <li><a href = "{{url_for('home')}}">Home</a></li>
+                <li><a href = "{{ url_for('aboutIrisFlower')}}">About the Flower</a></li>
+                <li><a href = "{{ url_for('aboutApplication')}}">About the Application</a></li>
+                <li><a href = "{{ url_for('contactInfo')}}">Contact</a></li>
+            </ul>
+        </nav>
+        <label for = "navToggle" class = "navToggleSymbol"> <!--The label tag serves as a "label" for the checkbox.-->
+            <span>⌄</span> <!--In this case, because we are not actually designing a checklist item (we are designing a "button"), the value of this label is the symbol itself. Using span instead of div because this is an inline element-->
+        </label>
+    </header>
+    <div class = "pageTitle">
+        <p class = "display-6">Contact Me</h1>
+    </div>
+    <div class="container mt-8">
+        <form class = "row g-3" id = "contactForm" action = "https://formsubmit.co/cchappy012@gmail.com" method="POST"> 
+        <!--<form class = "row g-3" id = "contactForm" method="POST"> Note: Trying to use this website (https://formsubmit.co/)to receive user form input via email. However, it requires to entire site to be deployed first.-->
+            <input type="hidden" name="_captcha" value="false"><!--Although not recommended, for testing purposes only, disabled reCAPTCHA to avoid displaying formSubmit's branding-->
+            <input type = "hidden" name = "_subject" value = "New email from Iris Flower Form!"><!--Allowing user submission to be sent back to the email in the "action" attribute of the form tag-->
+            <!--<input type = "hidden" name = "_next" value = "https://carmen-chau.github.io/thank-you-page/">--><!--Old "thank you page" deployed from Github-->
+            <input type = "hidden" name = "_next" value = "https://heroku-iris-test-app-1.herokuapp.com/thankYou">
+            <div class = "col-md-6">
+                <label for = "firstName" class = "form-label">First Name (required): </label>
+                <input type = "text" class = "form-control" name = "firstName" id = "firstName" required>
+            </div>
+            <div class = "col-md-6">
+                <label for = "lastName" class = "form-label">Last Name: </label>
+                <input type = "text" class = "form-control" name = "lastName" id = "lastName">
+            </div>
+            <div class = "col-md-12">
+                <label for = "email" class = "form-label">Email (required): </label>
+                <input type = "text" class = "form-control" name = "email" id = "email" required>
+            </div>
+            <div class = "col-md-12">
+                <label for = "message" class = "form-label">Any questions or comments?(required): </label>
+                <textarea class = "form-control" name = "message" id = "message" rows = "4" required></textarea>
+                <!--<input type = "text" class = "form-control" name = "message" id = "message" required>-->
+            </div>
+            <div class = "col-md-12">
+                <label for = "submitButton"></label>
+                <button type = "submit" class="btn btn-primary" name = "submitButton" id = "submitButton">Submit!</button>
+            </div>
+        </form>
+    </div>
+    <!--<form id="contactForm">
+        <label>Test field: <input type="text"></label>
+        <br><br>
+        <button type="submit">Submit form</button>
+    </form>
+    <p id="log"></p>-->
+    <footer class = "mt-auto">
+        <pre>Created with ❤️ by Carmen Chau.           <a href="{{ url_for('contactInfo') }}">Contact Information</a></pre>
+    </footer>
+</body>
+</html>
+<!--<script type="text/javascript" src="{{ url_for('static',filename ='contactPage.js') }}"></script>-->
+<script src = "/static/contactPage.js"></script>

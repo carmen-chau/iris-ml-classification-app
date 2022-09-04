@@ -1,0 +1,89 @@
+<!--Attempting to recreate file userResult.html, but with Bootstrap-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Iris Flower</title>
+</head>
+<body>
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <!-- Option 1: Bootstrap Bundle with Popper -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <!--CSS Link-->
+     <link rel = "stylesheet" href = "/static/aboutIrisFlower.css">
+    <header>
+        <img class = "webpageLogo" src = "/static/IrisLogo.png" width = 125px height = 125px alt = "Logo of website with Iris flower">
+        <input type = "checkbox" id = "navToggle" class = "navToggle"> <!--This will be the toggle button to enable mobile to see full nav bar. This is because we don't want to use any JS in making the toggle feature-->
+        <nav> <!--Putting the nav tag helps incidate a set of hyperlinks. Only intended for major blocks of such links-->
+            <ul> <!--Defining an unordered list-->
+                <li><a href = "{{url_for('home')}}">Home</a></li>
+                <li><a href = "{{ url_for('aboutIrisFlower')}}">About the Flower</a></li>
+                <li><a href = "{{ url_for('aboutApplication')}}">About the Application</a></li>
+                <li><a href = "{{ url_for('contactInfo')}}">Contact</a></li>
+            </ul>
+        </nav>
+        <label for = "navToggle" class = "navToggleSymbol"> <!--The label tag serves as a "label" for the checkbox.-->
+            <span>⌄</span> <!--In this case, because we are not actually designing a checklist item (we are designing a "button"), the value of this label is the symbol itself. Using span instead of div because this is an inline element-->
+        </label>
+    </header>
+    <div class = "webpageTitle">
+        <h1 class = "display-6">About the Iris Flower</h1>
+    </div>
+    <div class = "container">
+        <div class = "row">
+            <div class = "heading1">
+                <i><u>Background information about the flower</u></i>
+            </div>
+            <div class = "backgroundInformation">
+                <p>Iris is a genus consisting of over 300 flowering plant species ("Iris"). The flowers are six-petaled and are symmetrical in shape.</p>
+                <p>This application deals with 3 of those Iris species: Iris-setosa, Iris-virginica and Iris-versicolor.</p>
+                <p>The petals of an Iris flower can be separated into 2 different types: Sepals and petals. Sepals are differentiated from petals. Sepals are defined as modified leaves encasing the flower, and in the case of the Iris flower, are longer than petals ("Sepal - Flower Part").</p>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "heading2">
+                <i><u>Iris species Measurement Graphs</u></i>
+            </div>
+            <div class = "graphDescriptions">
+                <p>Analyzing the quantitative measurements of the test dataset, which contains 50 flowers of each of the 3 species studied can depict measurement clustering. Such a trend can be insightful for anticipating the predicted Iris species name. See Exhibit 1 and 2 below:</p>
+            </div>
+        </div>
+        <div class = "row">
+            <div id = "sepalGraphsHeading"><i><u>Exhibit 1: Sepal Length and Sepal Width Graphs</u></i></div>
+            <div class = "sepalGraphPictures">
+                <div class = "col-md-4">
+                    <div id = "sepalLengthGraph"><img src = "/static/SepalLengthGraph.png" width = 425px height = 300px alt = "random picture"></div>
+                </div>
+                <div class = "col-md-4">
+                    <div id = "sepalWidthGraph"><img src = "/static/SepalWidthGraph.png" width = 425px height = 300px alt = "random picture"></div>
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div id = "petalGraphsHeading"><i><u>Exhibit 2: Petal Length and Petal Width Graphs</u></i></div>
+            <div class = "petalGraphPictures">
+                <div class = "col-md-4">
+                    <div id = "petalLengthGraph"><img src = "/static/PetalLengthGraph.png" width = 425px height = 300px alt = "random picture"></div>
+                </div>
+                <div class = "col-md-4">
+                    <div id = "petalWidthGraph"><img src = "/static/PetalWidthGraph.png" width = 425px height = 300px alt = "random picture"></div>
+                </div>
+            </div>
+        </div>
+        <div class = "row">
+            <div id = "worksCited"><i><u>Works Cited</u></i></div>
+            <div class = "worksCitedReferences">
+                <p>Note: All references are cited in MLA</p>
+                <p>“Iris.” Pacific Bulb Society, <a href = "https://www.pacificbulbsociety.org/pbswiki/index.php/Iris">https://www.pacificbulbsociety.org/pbswiki/index.php/Iris</a>. Accessed 17 June 2022.</p>
+                <p>“Sepal -  Flower Part.” Britannica, <a href = "https://www.britannica.com/science/sepal">https://www.britannica.com/science/sepal</a>. Accessed 17 June 2022.</p>
+            </div>
+        </div>
+    </div>
+    <footer class = "mt-auto">
+        <pre>Created with ❤️ by Carmen Chau.           <a href="{{ url_for('contactInfo') }}">Contact Information</a></pre>
+    </footer> 
+</body>
+</html>

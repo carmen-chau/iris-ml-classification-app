@@ -1,0 +1,167 @@
+:root{
+    --bs-body-font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    font-family:'Times New Roman', Times, serif;
+    background-color: lightblue;
+    background-size: cover;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Scrolling Features */
+.fullWebpage{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/*Beginning of code for Header*/
+
+header {
+    background: lightblue; /*May make this the same colour as background. Original colour: #CF9FFF*/
+    text-align: center; /*Helps to align the website logo (and initially, the navigation links*/
+    position: fixed;
+    width: 100%; /*This, with position: fixed should allow the nav bar to maintain full length and remain on the top of the page when scrolling*/
+    z-index: 999; /*Elements with a larger z index (larger stack order) is shown first. With a high z score, this ensures that the nav bar is displayed first (and remains at the top)*/
+}
+
+nav {
+    background: lightblue; /*Enables the "hyperlinks" to maintain the same background as the header*/
+    position: absolute; /*Since the position of the header is fixed, the position of the nav will be relative to the header, which is its nearest positioned ancestor*/
+    text-align: left; /*Alligning the hyperlinks to the left of the page*/
+    top: 100%; /*Positions the hyperlinks right below the actual header (its top is relative to the header position)*/
+    width: 100%; /*The extra coloured portion of the screen with the hyperlinks, at full length, merges with the header*/
+    display: none;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    /*Having both margin and padding = 0 "resets" any allignment the unordered list has. Then, the points are re-styled in nav li (representing individual list elements*/
+    list-style: none; /*Removes the bullet format*/
+}
+
+nav li {
+    margin-bottom: 0.8em; /*Spaces out the links from one another*/
+    margin-left: 1em; /*Alligns list items with the header*/
+}
+
+nav a{ 
+    /*The following commands edit the style of the hyperlinks themselves*/
+    color: black;
+    text-decoration: none; /*Removes the underline usually associated with normal hyperlinks*/
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    color: blue;
+}
+
+.navToggle:checked ~ label {
+    rotate: 180deg;
+    /*transition: 0.5s;*/ /*Optional: This adds a bit of a delay between the rotation, makes it seem like the symbol is actually rotating*/
+}
+
+.navToggle:checked ~ nav { /*This command will run IF the checkbox is checked. It applies the following command to ALL THE FOLLOWING elements of <nav>. These "following elements" are called siblings*/
+    display: block; /*Display block allows the hyperlinks to display in full width on the next line*/
+}
+
+.navToggle {
+    display: none; /*Ensuring that the actual "checkbox" is not visible */
+}
+
+.navToggleSymbol {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 0.5em; /*Doing this, and not just left:0 allows the dropdown tags of the nav bar to be auto shifted to the left a little. */
+    height: 100%; /*Need to set this as 100% in order for the display flex to be centered*/
+    display: flex;
+    align-items: center; /*Use this to center the symbol vertically. There is no width set on the flexbox so setting justify-content will not work regardless*/
+    font-size: 30px;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 800px) { /*The following code runs when the browser window is a min of 800px (aka about the width for tablets and desktop screens*/
+    .navToggleSymbol {
+        display: none;
+    }
+
+    header {
+        display: grid;
+        grid-template-columns: 1fr auto minmax(600px, 1fr) 1fr;
+    }
+
+    .webpageLogo {
+        grid-column: 2 / 3;
+    }
+
+    nav {
+        all: unset;
+        grid-column: 3 / 4;
+        display: flex;
+        /*justify-content: flex-end;*/
+        align-items: center;
+        padding: 0px 0px 0px 10px;
+    }
+
+    nav a{
+        opacity: 1;
+    }
+
+    nav ul{
+        display: flex;
+        /*flex-direction: row;*/
+        /*height: 100%;*/
+        /*align-items: center;*/
+        /*justify-content: flex-end;*/
+    }
+
+    nav li {
+        margin-left: 3em;
+        margin-bottom: -0.2em;
+    }
+
+}
+
+/*Styling for the page title:*/
+.pageTitle{
+    color:black;
+    text-align: center;
+    text-shadow: -1.0px 1.0px 0 white, 1.0px 1.0px 0 white, 1.0px -1.0px 0 white,-1.0px -1.0px 0 white; 
+    padding-top: 10em; /*Used to be 3.8 em. Usiong % does not allow title to remain in place when browser window shrinked*/
+    padding-bottom: 1.2em;
+}
+
+/*Styling for the footer*/
+
+footer{
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    align-items: center;
+    justify-content: center;
+    padding-top: 6.2em;
+
+    /*
+    Reference: https://wetainment.com/articles/sticky-html-footer/
+    */
+}
+
+pre{
+    font-family:'Times New Roman', Times, serif;
+}
+
+
+/*OLD
+/*Styling for the page form block
+
+.contactForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}*/
