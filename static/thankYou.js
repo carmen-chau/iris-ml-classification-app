@@ -6,8 +6,8 @@ lastName = sessionStorage.getItem("userLastName")
 
 //sessionStorage.getItem("userLastName")
 
-document.getElementById("firstName").innerText = (firstName)
-document.getElementById("lastName").innerText = (lastName)
+document.getElementById("firstName").innerText = firstName
+document.getElementById("lastName").innerText = lastName
 
 /*
 
