@@ -32,13 +32,22 @@
     <div class = "container">
         <div class = "pageTitle">
             <p class = "display-6">Thank you!</h1>
-            <div id = "userFirstName"></div>
-            <div id = "userLastName"></div>
         </div>
-        <p class="text-center"><span class = "highlight">Your form submission has been received. Please allow 2-3 business days for me to get back to you. Talk to you soon!</span></p>
+        <p class="text-center">
+            <span class = "highlight">
+                <span>Hey, </span> 
+                <span id = "firstName"></span>
+                <span>  </span>
+                <span id = "lastName"></span>
+                <span>!</span>
+                <span>Your form submission has been received. Please allow 2-3 business days for me to get back to you. Talk to you soon!</span>
+            </span>
+        </p>
     </div>
     <footer class = "mt-auto">
         <pre>Created with ❤️ by Carmen Chau.           <a href="{{ url_for('contactInfo') }}">Contact Information</a></pre>
     </footer>
+    <script src = "/static/thankYou.js"></script>
 </body>
 </html>
+<!--<script src = "/static/thankYou.js"></script>-->
