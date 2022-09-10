@@ -27,8 +27,7 @@ x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 30, random_s
 #Assigning train dataframe with 90 entries. Validation dataframe has 30 entries. 
 x_train, x_validation, y_train, y_validation = train_test_split(x_train, y_train,train_size = 90, random_state = 52)
 
-#Step 5: Converting the "x" and "y" values for each of the 3 datasets into arrays 
-#This step is necessary for individual datapoints in the dataset to be accessed and iterated quickly. 
+#Converting variable x and y into arrays 
 xTrainNumpy = x_train.to_numpy() 
 yTrainNumpy = y_train.to_numpy()
 xTestNumpy = x_test.to_numpy() 
@@ -40,6 +39,19 @@ yValidationNumpy = y_validation.to_numpy()
 #Distance between points is a critical component of the KNN algorithm, as predictions are made based on test point that are closest to the location of the inputed points.
 
 def euclideanDistanceAlgo(point1, point2):
+    ''' 
+    Calculates the euclidean distance between 2 points
+
+    Parameters
+    ----------
+    point1 (array): An array with the coordinates of the point
+    point2 (array): An array with the corrdinates of another point
+
+    Returns
+    -------
+    float
+        The euclidean distance between the 2 points
+    '''
     distanceBeforeSquareRoot = 0
     for elements in range(len(point1)):
         distanceBeforeSquareRoot += (point1[elements] - point2[elements]) ** 2
@@ -48,35 +60,45 @@ def euclideanDistanceAlgo(point1, point2):
 
 #Step 8: Coding a KNN algorithm 
 def kNearestAlgo(xTrain, yTrain, xPredictionData, kNeighbours):
-    predictionLabels = [] #empty list to store the predicted Iris flower species based on data in xPredictionData
-    print("values of xPredictionData", xPredictionData)
+    '''
+    Implements the K- Nearest Neighbour (KNN) Algorithm 
+
+    Parameters
+    ----------
+    xTrain : Array
+        The array containing only the quantative measurements of the Iris flowers
+    yTrain : Array
+        The array with the species label of the flowers in xTrain
+    xPredictionDataTrain : Array
+        The array contain unknown Iris Flower measurements
+    kNeighbours : int
+        The number of existing points of which the unknown measurement is compared to
+    
+    Returns
+    -------
+    str
+        Returns the species name corresponding to the unknown measurements
+    '''
+    predictionLabels = [] #empty list to store the predicted Iris flower species
     for testElements in xPredictionData: 
         #looping through the inner arrays in xPredictionData
         #These inner arrays contain the 4 quantitative measurements for each Iris Flower definined in the xPredictionData dataset 
         distanceBetweenPoints = []
-        
         for trainElements in xTrain:
             #Iterating through the inner quantative measurements for the Iris flowers in the training dataset
-            euclideanDistance = euclideanDistanceAlgo(testElements, trainElements) #The method euclideanDistanceAlgo takes in 4 dimensional arrays. Assuming them to be definied as points in Euclidean space, can calculate the distance between the 2. 
-            distanceBetweenPoints.append(euclideanDistance) #The calculated distance is stored in an array called euclideanDistance
+            euclideanDistance = euclideanDistanceAlgo(testElements, trainElements) 
+            #The calculated distance is stored in an list called euclideanDistance
+            distanceBetweenPoints.append(euclideanDistance)
 
-        distanceBetweenPoints = np.array(distanceBetweenPoints)# need to convert list distanceBetweenPoints to array for the following calls to work 
-        selectedKDistancesIndex = np.argsort(distanceBetweenPoints)[0:kNeighbours]#np.argsort is a method that returns the index of the closest points in order as an array. Indexing the array at [0:kNeighbours] returns kNeighbours # of indexes
-        labels = yTrain[selectedKDistancesIndex] #utilizing the concept of Integer Array Indexing, can access the Iris species of the select kNeighbours # of Iris flowers.
-        modeOfLabels = st.mode(labels) #getting the label value that is the most common among those selected, which according to the KNN algorithm, is our prediction
-        predictionLabels.append(modeOfLabels) #appending mdoeOfLabels to list predictionLabels
+        #converting distanceBetweenPoints to an array 
+        distanceBetweenPoints = np.array(distanceBetweenPoints)
+        #Retrieving the index of the kNeightbour number of points
+        selectedKDistancesIndex = np.argsort(distanceBetweenPoints)[0:kNeighbours]
+        #Utilizing the concept of Integer Array Indexing, retrieving the species for each of the selected kNeighbour points 
+        labels = yTrain[selectedKDistancesIndex]
+        #Determining the species that is the most frequest among selected points. This will be the species name returned as the final prediction
+        modeOfLabels = st.mode(labels)
+        #Appending modeOfLabels to list predictionLabels
+        predictionLabels.append(modeOfLabels)
 
     return predictionLabels #A list of predicted Iris species labels are returned
-
-#print(kNearestAlgo(xTrainNumpy, yTrainNumpy, xTestNumpy, 10))
-
-'''
-Learning references:
-
-From this website (https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html):
-
-The train_test_split() method can divide data up into the testSize and trainingSize, just depends on what arguments are passed in
-
-Since the arguments accepted are related to train and test, must only pass in the size of THOSE respective categories. Thus, validation dataset can only be formed by splitting off the training and testing datasets.
-
-'''
