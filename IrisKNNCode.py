@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #Carmen Chau
 #IrisKNNCode.py
-#To process user quantitative input from Iris ML Classification Application and return a species name prediction using a trained ML algorithm fron a dataset
+#To process user quantitative input from the application. Returns a Iris species name prediction
 
 import pandas as pd
 import numpy as np

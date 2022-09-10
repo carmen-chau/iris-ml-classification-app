@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #Carmen Chau
 #IrisClassifierGraphs.py
-#To display a graphical representation of the raw data imported from the UCI Iris database
+#To display graphical representations of the data imported from the UCI Iris Flower dataset
 
 import pandas as pd
 import matplotlib.pyplot as plt 
