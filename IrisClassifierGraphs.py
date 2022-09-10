@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 
 #Importing the UCI dataset as a Panda Dataframe
-dataSet = pd.read_csv('Iris Dataset.csv')
+dataSet = pd.read_csv('IrisDataset.csv')
 
 #Deleting column Id
 condensedDataSet = dataSet.drop(columns = "Id") 
