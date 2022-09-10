@@ -1,26 +1,31 @@
 #!/usr/bin/env python3
 #Carmen Chau
 #IrisKNNCode.py
-#To process user quantitative input from the application. Returns a Iris species name prediction
+#To process user quantitative input, and returns a Iris species name prediction
 
 import pandas as pd
 import numpy as np
 import statistics as st 
 from sklearn.model_selection import train_test_split
 
-#Step 1: Importing the Iris database 
-dataSet = pd.read_csv('Iris Dataset.csv')
+#Importing the UCI dataset as a Panda Dataframe
+dataSet = pd.read_csv('IrisDataset.csv')
 
-#Step 2: Dropping one column of the dataset
-condensedDataSet = dataSet.drop(columns = "Id") #Removing the column called "Id", as the dataset when printed as a Numpy dataframe will have row numbers already assigned 
+#Deleting column Id
+condensedDataSet = dataSet.drop(columns = "Id") 
 
-#Step 3: Defining the x and y values. x and y are Panda Dataframes stemming from parent condensedDataSet
-x = condensedDataSet.drop(columns = "Species") #X (which represents the input) contains all the quantative data (the 4 measurements) of each Iris entry 
-y = condensedDataSet["Species"] #Y (which represents the output) contains all the species labels of each Iris entry 
+#Forming 2 new Panda Dataframes from parent dataSet. Defining the x and y values. x and y are Panda Dataframes stemming from parent condensedDataSet
+#x is a Dataframe containing all the data from parent but the data in column "Species"
+x = condensedDataSet.drop(columns = "Species")
+#y is a Dataframe containing just the species name of each entry
+y = condensedDataSet["Species"] 
 
-#Step 4: Splitting the dataset into 3 smaller datasets called training, validation and testing. These too are dataframes. Note: Passing random_state allows the RANDOMIZED ASSIGNMENT OF TRAIN AND TEST VALEUS to remain consistent among different compiler runs
+#Step 4: Splitting the dataset into 3 smaller dataframes called training, validation and testing.
+#Assigned a value to variable random_state to ensure consistent splitting of dataset values across different browsing sessions
+#Creating a test dataframe with 30 entries. The train and validation dataframe combined have 120 entries.
 x_train, x_test, y_train, y_test = train_test_split(x,y,test_size = 30, random_state = 52) #test dataset size = 30. train + validation dataset size = 120. In total, 150 elements which is the size of the original dataset.
-x_train, x_validation, y_train, y_validation = train_test_split(x_train, y_train,train_size = 90, random_state = 52)  #Final validation dataset size = 30. Final train dataset size = 90 
+#Assigning train dataframe with 90 entries. Validation dataframe has 30 entries. 
+x_train, x_validation, y_train, y_validation = train_test_split(x_train, y_train,train_size = 90, random_state = 52)
 
 #Step 5: Converting the "x" and "y" values for each of the 3 datasets into arrays 
 #This step is necessary for individual datapoints in the dataset to be accessed and iterated quickly. 
