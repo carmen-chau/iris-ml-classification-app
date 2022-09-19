@@ -1,7 +1,3 @@
-/*Corresponding css code for file userResultBoot.html*/
-
-/*The following code only works with col-md-4*/
-
 body{
     font-family:'Times New Roman', Times, serif;
     background-color: lightblue;
@@ -15,38 +11,36 @@ body{
 /*Beginning of code for Header*/
 
 header {
-    background: lightblue; /*May make this the same colour as background. Original colour: #CF9FFF*/
-    text-align: center; /*Helps to align the website logo (and initially, the navigation links*/
+    background: lightblue;
+    text-align: center; 
     position: fixed;
-    width: 100%; /*This, with position: fixed should allow the nav bar to maintain full length and remain on the top of the page when scrolling*/
-    z-index: 999; /*Elements with a larger z index (larger stack order) is shown first. With a high z score, this ensures that the nav bar is displayed first (and remains at the top)*/
+    width: 100%; 
+    z-index: 999;
 }
 
 nav {
-    background: lightblue; /*Enables the "hyperlinks" to maintain the same background as the header*/
-    position: absolute; /*Since the position of the header is fixed, the position of the nav will be relative to the header, which is its nearest positioned ancestor*/
-    text-align: left; /*Alligning the hyperlinks to the left of the page*/
-    top: 100%; /*Positions the hyperlinks right below the actual header (its top is relative to the header position)*/
-    width: 100%; /*The extra coloured portion of the screen with the hyperlinks, at full length, merges with the header*/
+    background: lightblue;
+    position: absolute; 
+    text-align: left; 
+    top: 100%; 
+    width: 100%; 
     display: none;
 }
 
 nav ul {
     margin: 0;
     padding: 0;
-    /*Having both margin and padding = 0 "resets" any allignment the unordered list has. Then, the points are re-styled in nav li (representing individual list elements*/
-    list-style: none; /*Removes the bullet format*/
+    list-style: none; 
 }
 
 nav li {
-    margin-bottom: 0.8em; /*Spaces out the links from one another*/
-    margin-left: 1em; /*Alligns list items with the header*/
+    margin-bottom: 0.8em; 
+    margin-left: 1em; 
 }
 
 nav a{ 
-    /*The following commands edit the style of the hyperlinks themselves*/
     color: black;
-    text-decoration: none; /*Removes the underline usually associated with normal hyperlinks*/
+    text-decoration: none; 
     font-size: 1.1rem;
     text-transform: uppercase;
 }
@@ -57,30 +51,29 @@ nav a:hover {
 
 .navToggle:checked ~ label {
     rotate: 180deg;
-    /*transition: 0.5s;*/ /*Optional: This adds a bit of a delay between the rotation, makes it seem like the symbol is actually rotating*/
 }
 
-.navToggle:checked ~ nav { /*This command will run IF the checkbox is checked. It applies the following command to ALL THE FOLLOWING elements of <nav>. These "following elements" are called siblings*/
-    display: block; /*Display block allows the hyperlinks to display in full width on the next line*/
+.navToggle:checked ~ nav { 
+    display: block; 
 }
 
 .navToggle {
-    display: none; /*Ensuring that the actual "checkbox" is not visible */
+    display: none; 
 }
 
 .navToggleSymbol {
     position: absolute;
     top: 0;
     left: 0;
-    margin-left: 0.5em; /*Doing this, and not just left:0 allows the dropdown tags of the nav bar to be auto shifted to the left a little. */
-    height: 100%; /*Need to set this as 100% in order for the display flex to be centered*/
+    margin-left: 0.5em;
+    height: 100%; 
     display: flex;
-    align-items: center; /*Use this to center the symbol vertically. There is no width set on the flexbox so setting justify-content will not work regardless*/
+    align-items: center; 
     font-size: 30px;
     font-weight: bold;
 }
 
-@media screen and (min-width: 800px) { /*The following code runs when the browser window is a min of 800px (aka about the width for tablets and desktop screens*/
+@media screen and (min-width: 800px) { /*The following code runs when the browser window is a min of 800px*/
     .navToggleSymbol {
         display: none;
     }
@@ -98,7 +91,6 @@ nav a:hover {
         all: unset;
         grid-column: 3 / 4;
         display: flex;
-        /*justify-content: flex-end;*/
         align-items: center;
         padding: 0px 0px 0px 10px;
     }
@@ -109,10 +101,6 @@ nav a:hover {
 
     nav ul{
         display: flex;
-        /*flex-direction: row;*/
-        /*height: 100%;*/
-        /*align-items: center;*/
-        /*justify-content: flex-end;*/
     }
 
     nav li {
@@ -141,7 +129,7 @@ nav a:hover {
     padding-top: 2em;
 }
 
-/*Styling for the presentation of the sepal graph pictures*/
+/*Styling for the presentation of the sepal graph headings and pictures*/
 #sepalGraphsHeading{
     text-align: center;
 }
@@ -149,11 +137,10 @@ nav a:hover {
 .sepalGraphPictures{
     display: flex;
     flex-direction: row;
-    /*justify-content: center;*/
 }
 
 #sepalLengthGraph{
-    padding-left: 30%; /*Used to be 10em/*/
+    padding-left: 30%; 
     padding-top: 2em;
 }
 
@@ -161,7 +148,7 @@ nav a:hover {
     padding-top: 2em;
 }
 
-/*Styling for the Petal graph pictures*/
+/*Styling for the presentation of the petal graph headings and pictures*/
 
 #petalGraphsHeading{
     text-align: center;
@@ -171,7 +158,6 @@ nav a:hover {
 .petalGraphPictures{
     display: flex;
     flex-direction: row;
-    /*justify-content: center;*/
 }
 
 #petalLengthGraph{
@@ -184,7 +170,7 @@ nav a:hover {
 }
 
 
-@media screen and (min-width: 0px) {  /*Original commands: max-width: 600px*/
+@media screen and (min-width: 0px) { 
     .sepalGraphPictures{
         display: flex;
         flex-direction: column;
@@ -193,7 +179,6 @@ nav a:hover {
     }
     #sepalLengthGraph{
         padding-left: 0%;
-        /*padding-right: 30%; This line was not necessary*/
    }
 
     .petalGraphPictures{
@@ -206,16 +191,8 @@ nav a:hover {
         padding-left: 0%;
     }
 }
-/*PHOTOS ARE RESIZING WEIRDLY!!*/
-/*
-@media screen and (max-width: 1800px) and (min-width: 600px){ /*Max width used to be 600px*/
-    /*#sepalLengthGraph{
-        padding-left: 0%;
-        left: 80%;
-        /*padding-right: 60%; This line was not necessary*/
-    /*}
-}
-*/
+
+/*Styling for other webpage elements*/
 
 .backgroundInformation{
     padding-top: 1em;
@@ -232,7 +209,7 @@ nav a:hover {
 .worksCitedReferences{
     padding-top: 1em;
 }
-/*Styling for the footer. NOTE: CURRENTLY, FOOTER IS NOT STICKY FOR SOME REASON*/
+/*Styling for the footer*/
 
 footer{
     display: flex;
@@ -241,10 +218,6 @@ footer{
     align-items: center;
     justify-content: center;
     padding-top: 6.2em;
-
-    /*
-    Reference: https://wetainment.com/articles/sticky-html-footer/
-    */
 }
 
 pre{

@@ -1,17 +1,7 @@
-//firstName = JSON.stringify(sessionStorage.getItem("userFirstName"))
-//lastName = JSON.stringify(sessionStorage.getItem("userLastName"))
-
+//Retrieving user input first name and last name
 firstName = sessionStorage.getItem("userFirstName")
 lastName = sessionStorage.getItem("userLastName")
 
-//sessionStorage.getItem("userLastName")
-
+//Displaying user first name and last name in custom "Thank You" message
 document.getElementById("firstName").innerText = firstName
 document.getElementById("lastName").innerText = lastName
-
-/*
-
-document.getElementById("firstName").innerText = (firstName).slice(3,firstName.length)
-document.getElementById("firstName").innerText = (lastName).slice(3,lastName.length)
-
-*/
