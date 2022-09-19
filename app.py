@@ -56,39 +56,3 @@ def thankYou():
 
 if __name__ == '__main__': #The lines below help the file to run when directly invoked by the terminal 
     app.run(debug = True)
-
-
-'''
-Note: Archived code:
-
-For all of the @app.route WITH THE EXCEPTION of @app.route("/), we are neither retrieving data (GET) nor sending data off to be processed (POST)
-
-Thus, we do not need to format such requests like so:
-
-@app.route('/userRedirect', methods=['GET', 'POST'])
-def userRedirect():
-    #if request.method == 'POST':
-        #return redirect(url_for('home4'))
-    #else:
-        return render_template('home4.html')
-
-
-Instead, we can simply return either redirect(url_for('home4')) or render_template('home4.html')
-'''
-
-'''
-A brief note on the usage of redirect(url_for()):
-
-Take a look at the code:
-
-@app.route('/aboutFlower', methods=['GET', 'POST'])
-def aboutIrisFlower():
-    #return redirect(url_for('aboutApplication'))
-
-The return method takes in the NAME of the REDIRECT METHOD. However, this method CANNOT BE ITSELF, and so this is why we use render_template instead
-
-Refer to the website below for more information:
-
-https://hackersandslackers.com/flask-routes/
-
-'''
