@@ -142,7 +142,7 @@ nav a:hover {
 }
 
 /*Code to resize input box.*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 300px) { /*Used to be 600px*/
     input[class*="userInputSections"] {
       width: 100%;
       margin-top: 0;
