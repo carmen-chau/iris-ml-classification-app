@@ -1,4 +1,4 @@
-# Welcome to the Iris Flower Classification Web Application!
+# Welcome to the Iris Flower ML Classification Web Application!
 
 Please note: This README.md file is currently in development, more information will be added soon.
 
